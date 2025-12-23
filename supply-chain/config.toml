@@ -753,3 +753,63 @@ criteria = "safe-to-deploy"
 [[exemptions.xml-rs]]
 version = "0.8.4"
 criteria = "safe-to-deploy"
+
+[policy.sp-application-crypto]
+audit-as-crates-io = false
+
+[policy.sp-arithmetic]
+audit-as-crates-io = false
+
+[policy.sp-core]
+audit-as-crates-io = false
+
+[policy.sp-crypto-hashing]
+audit-as-crates-io = false
+
+[policy.sp-debug-derive]
+audit-as-crates-io = false
+
+[policy.sp-externalities]
+audit-as-crates-io = false
+
+[policy.sp-io]
+audit-as-crates-io = false
+
+[policy.sp-keystore]
+audit-as-crates-io = false
+
+[policy.sp-panic-handler]
+audit-as-crates-io = false
+
+[policy.sp-runtime]
+audit-as-crates-io = false
+
+[policy.sp-runtime-interface]
+audit-as-crates-io = false
+
+[policy.sp-runtime-interface-proc-macro]
+audit-as-crates-io = false
+
+[policy.sp-state-machine]
+audit-as-crates-io = false
+
+[policy.sp-std]
+audit-as-crates-io = false
+
+[policy.sp-storage]
+audit-as-crates-io = false
+
+[policy.sp-tracing]
+audit-as-crates-io = false
+
+[policy.sp-trie]
+audit-as-crates-io = false
+
+[policy.sp-wasm-interface]
+audit-as-crates-io = false
+
+[policy.sp-weights]
+audit-as-crates-io = false
+
+[policy.substrate-bip39]
+audit-as-crates-io = false
