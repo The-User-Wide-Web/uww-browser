@@ -110,6 +110,11 @@ git = "https://github.com/mozilla/neqo"
 tag = "v0.13.4"
 replace-with = "vendored-sources"
 
+[source."git+https://github.com/paritytech/polkadot-sdk.git?tag=polkadot-stable2409"]
+git = "https://github.com/paritytech/polkadot-sdk.git"
+tag = "polkadot-stable2409"
+replace-with = "vendored-sources"
+
 [source."git+https://github.com/servo/rust-cssparser?rev=958a3f098acb92ddacdce18a7ef2c4a87ac3326f"]
 git = "https://github.com/servo/rust-cssparser"
 rev = "958a3f098acb92ddacdce18a7ef2c4a87ac3326f"

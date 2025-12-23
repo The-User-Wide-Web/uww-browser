@@ -1,5 +1,3 @@
-use core::iter::FusedIterator;
-
 use crate::lookups::{
     canonical_combining_class, canonical_fully_decomposed, compatibility_fully_decomposed,
     stream_safe_trailing_nonstarters,
@@ -61,8 +59,6 @@ impl<I: Iterator<Item = char>> Iterator for StreamSafe<I> {
     }
 }
 
-impl<I: Iterator<Item = char> + FusedIterator> FusedIterator for StreamSafe<I> {}
-
 #[derive(Debug)]
 pub(crate) struct Decomposition {
     pub(crate) leading_nonstarters: usize,
@@ -114,7 +110,7 @@ mod tests {
     use crate::normalize::decompose_compatible;
 
     #[cfg(not(feature = "std"))]
-    use alloc::{string::String, vec::Vec};
+    use crate::no_std_prelude::*;
 
     use core::char;
 

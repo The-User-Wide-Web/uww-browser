@@ -13,7 +13,7 @@ use super::UnicodeNormalization;
 use core::char;
 
 #[cfg(not(feature = "std"))]
-use alloc::string::{String, ToString};
+use crate::no_std_prelude::*;
 
 #[test]
 fn test_nfd() {

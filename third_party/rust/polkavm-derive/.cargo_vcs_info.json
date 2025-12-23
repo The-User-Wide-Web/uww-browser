@@ -1,0 +1,6 @@
+{
+  "git": {
+    "sha1": "e0f8b2e2dd8bf5b3229b00e935befa0f797fd4d8"
+  },
+  "path_in_vcs": "crates/polkavm-derive"
+}

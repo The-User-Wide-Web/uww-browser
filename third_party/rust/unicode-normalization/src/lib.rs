@@ -62,7 +62,12 @@ pub use crate::recompose::Recompositions;
 pub use crate::replace::Replacements;
 pub use crate::stream_safe::StreamSafe;
 pub use crate::tables::UNICODE_VERSION;
-use core::{option, str::Chars};
+use core::{
+    str::Chars,
+    option,
+};
+
+mod no_std_prelude;
 
 mod decompose;
 mod lookups;
@@ -72,6 +77,8 @@ mod quick_check;
 mod recompose;
 mod replace;
 mod stream_safe;
+
+#[rustfmt::skip]
 mod tables;
 
 #[doc(hidden)]
@@ -133,22 +140,22 @@ pub trait UnicodeNormalization<I: Iterator<Item = char>> {
 impl<'a> UnicodeNormalization<Chars<'a>> for &'a str {
     #[inline]
     fn nfd(self) -> Decompositions<Chars<'a>> {
-        Decompositions::new_canonical(self.chars())
+        decompose::new_canonical(self.chars())
     }
 
     #[inline]
     fn nfkd(self) -> Decompositions<Chars<'a>> {
-        Decompositions::new_compatible(self.chars())
+        decompose::new_compatible(self.chars())
     }
 
     #[inline]
     fn nfc(self) -> Recompositions<Chars<'a>> {
-        Recompositions::new_canonical(self.chars())
+        recompose::new_canonical(self.chars())
     }
 
     #[inline]
     fn nfkc(self) -> Recompositions<Chars<'a>> {
-        Recompositions::new_compatible(self.chars())
+        recompose::new_compatible(self.chars())
     }
 
     #[inline]
@@ -162,25 +169,26 @@ impl<'a> UnicodeNormalization<Chars<'a>> for &'a str {
     }
 }
 
+
 impl UnicodeNormalization<option::IntoIter<char>> for char {
     #[inline]
     fn nfd(self) -> Decompositions<option::IntoIter<char>> {
-        Decompositions::new_canonical(Some(self).into_iter())
+        decompose::new_canonical(Some(self).into_iter())
     }
 
     #[inline]
     fn nfkd(self) -> Decompositions<option::IntoIter<char>> {
-        Decompositions::new_compatible(Some(self).into_iter())
+        decompose::new_compatible(Some(self).into_iter())
     }
 
     #[inline]
     fn nfc(self) -> Recompositions<option::IntoIter<char>> {
-        Recompositions::new_canonical(Some(self).into_iter())
+        recompose::new_canonical(Some(self).into_iter())
     }
 
     #[inline]
     fn nfkc(self) -> Recompositions<option::IntoIter<char>> {
-        Recompositions::new_compatible(Some(self).into_iter())
+        recompose::new_compatible(Some(self).into_iter())
     }
 
     #[inline]
@@ -197,22 +205,22 @@ impl UnicodeNormalization<option::IntoIter<char>> for char {
 impl<I: Iterator<Item = char>> UnicodeNormalization<I> for I {
     #[inline]
     fn nfd(self) -> Decompositions<I> {
-        Decompositions::new_canonical(self)
+        decompose::new_canonical(self)
     }
 
     #[inline]
     fn nfkd(self) -> Decompositions<I> {
-        Decompositions::new_compatible(self)
+        decompose::new_compatible(self)
     }
 
     #[inline]
     fn nfc(self) -> Recompositions<I> {
-        Recompositions::new_canonical(self)
+        recompose::new_canonical(self)
     }
 
     #[inline]
     fn nfkc(self) -> Recompositions<I> {
-        Recompositions::new_compatible(self)
+        recompose::new_compatible(self)
     }
 
     #[inline]

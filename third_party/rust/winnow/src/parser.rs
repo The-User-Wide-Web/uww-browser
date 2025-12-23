@@ -47,6 +47,18 @@ use crate::stream::{Recover, Recoverable};
 /// - `&[u8]` and `&str`, see [`winnow::token::literal`][crate::token::literal]
 pub trait Parser<I, O, E> {
     /// Parse all of `input`, generating `O` from it
+    ///
+    /// This is intended for integrating your parser into the rest of your application.
+    ///
+    /// For one [`Parser`] to drive another [`Parser`] forward or for
+    /// [incremental parsing][StreamIsPartial], see instead [`Parser::parse_next`].
+    ///
+    /// This assumes the [`Parser`] intends to read all of `input` and will return an
+    /// [`eof`][crate::combinator::eof] error if it does not.
+    /// To ignore trailing `input`, combine your parser with a [`rest`][crate::token::rest]
+    /// (e.g. `(parser, rest).parse(input)`).
+    ///
+    /// See also the [tutorial][crate::_tutorial::chapter_6].
     #[inline]
     fn parse(&mut self, mut input: I) -> Result<O, ParseError<I, <E as ParserError<I>>::Inner>>
     where
@@ -76,9 +88,12 @@ pub trait Parser<I, O, E> {
 
     /// Take tokens from the [`Stream`], turning it into the output
     ///
-    /// This includes advancing the [`Stream`] to the next location.
+    /// This includes advancing the input [`Stream`] to the next location.
     ///
     /// On error, `input` will be left pointing at the error location.
+    ///
+    /// This is intended for a [`Parser`] to drive another [`Parser`] forward or for
+    /// [incremental parsing][StreamIsPartial]
     fn parse_next(&mut self, input: &mut I) -> Result<O, E>;
 
     /// Take tokens from the [`Stream`], turning it into the output
@@ -726,7 +741,7 @@ pub trait Parser<I, O, E> {
         Self: core::marker::Sized,
         G: FnMut(&O2) -> bool,
         I: Stream,
-        O: crate::lib::std::borrow::Borrow<O2>,
+        O: core::borrow::Borrow<O2>,
         O2: ?Sized,
         E: ParserError<I>,
     {
@@ -775,7 +790,7 @@ pub trait Parser<I, O, E> {
         I: Stream,
         E: AddContext<I, C>,
         E: ParserError<I>,
-        C: Clone + crate::lib::std::fmt::Debug,
+        C: Clone + core::fmt::Debug,
     {
         impls::Context {
             parser: self,
@@ -824,7 +839,7 @@ pub trait Parser<I, O, E> {
         E: AddContext<I, C>,
         E: ParserError<I>,
         F: Fn() -> FI + Clone,
-        C: crate::lib::std::fmt::Debug,
+        C: core::fmt::Debug,
         FI: Iterator<Item = C>,
     {
         impls::ContextWith {
@@ -1292,7 +1307,7 @@ impl_parser_for_tuples!(
 );
 
 #[cfg(feature = "alloc")]
-use crate::lib::std::boxed::Box;
+use alloc::boxed::Box;
 
 #[cfg(feature = "alloc")]
 impl<I, O, E> Parser<I, O, E> for Box<dyn Parser<I, O, E> + '_> {
@@ -1331,10 +1346,10 @@ where
     I: Stream,
     I: StreamIsPartial,
     R: FromRecoverableError<Recoverable<I, R>, E>,
-    R: crate::lib::std::fmt::Debug,
+    R: core::fmt::Debug,
     E: FromRecoverableError<Recoverable<I, R>, E>,
     E: ParserError<Recoverable<I, R>>,
-    E: crate::lib::std::fmt::Debug,
+    E: core::fmt::Debug,
 {
     fn recoverable_parse(&mut self, input: I) -> (I, Option<O>, Vec<R>) {
         debug_assert!(
@@ -1388,7 +1403,7 @@ mod tests {
     #[macro_export]
     macro_rules! assert_size (
     ($t:ty, $sz:expr) => (
-      assert!($crate::lib::std::mem::size_of::<$t>() <= $sz, "{} <= {} failed", $crate::lib::std::mem::size_of::<$t>(), $sz);
+      assert!(core::mem::size_of::<$t>() <= $sz, "{} <= {} failed", core::mem::size_of::<$t>(), $sz);
     );
   );
 

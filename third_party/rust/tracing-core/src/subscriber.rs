@@ -1,11 +1,8 @@
 //! Collectors collect and record trace data.
 use crate::{span, Dispatch, Event, LevelFilter, Metadata};
 
-use crate::stdlib::{
-    any::{Any, TypeId},
-    boxed::Box,
-    sync::Arc,
-};
+use alloc::{boxed::Box, sync::Arc};
+use core::any::{Any, TypeId};
 
 /// Trait representing the functions required to collect trace data.
 ///
@@ -699,6 +696,14 @@ impl Subscriber for NoSubscriber {
     fn exit(&self, _span: &span::Id) {}
 }
 
+impl NoSubscriber {
+    /// Returns a new `NoSubscriber`.
+    #[must_use]
+    pub const fn new() -> Self {
+        Self(())
+    }
+}
+
 impl<S> Subscriber for Box<S>
 where
     S: Subscriber + ?Sized,
@@ -780,7 +785,7 @@ where
             return Some(self as *const Self as *const _);
         }
 
-        self.as_ref().downcast_raw(id)
+        unsafe { self.as_ref().downcast_raw(id) }
     }
 }
 
@@ -865,6 +870,6 @@ where
             return Some(self as *const Self as *const _);
         }
 
-        self.as_ref().downcast_raw(id)
+        unsafe { self.as_ref().downcast_raw(id) }
     }
 }

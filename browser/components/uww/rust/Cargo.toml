@@ -8,8 +8,8 @@ crate-type = ["staticlib", "cdylib"]
 
 [dependencies]
 # Link to the main uww crates
-nudge-network = { path = "../../../../rust/uww/crates/nudge-network" }
-nudge-primitives = { path = "../../../../rust/uww/crates/nudge-primitives" }
+nudge-network = { path = "../../../../../rust/uww/crates/nudge-network" }
+nudge-primitives = { path = "../../../../../rust/uww/crates/nudge-primitives" }
 # uniffi = "0.28" # Example version, check what uww uses
 lazy_static = "1.4"
 tokio = { version = "1", features = ["full"] }
