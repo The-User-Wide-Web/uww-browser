@@ -75,6 +75,7 @@ ChromeUtils.defineESModuleGetters(lazy, {
   TelemetryReportingPolicy:
     "resource://gre/modules/TelemetryReportingPolicy.sys.mjs",
   TRRRacer: "resource:///modules/TRRPerformance.sys.mjs",
+  UWWPrefs: "chrome://uww/content/uww.js",
   WebChannel: "resource://gre/modules/WebChannel.sys.mjs",
   WebProtocolHandlerRegistrar:
     "resource:///modules/WebProtocolHandlerRegistrar.sys.mjs",
@@ -1098,6 +1099,13 @@ BrowserGlue.prototype = {
         task: async () => {
           await lazy.ContextualIdentityService.load();
           lazy.Discovery.update();
+        },
+      },
+
+      {
+        name: "UWWPrefs.init",
+        task: () => {
+          lazy.UWWPrefs.init();
         },
       },
     ];

@@ -1,0 +1,4 @@
+uww.jar:
+% content uww %content/uww/
+    content/uww/uww.js
+    content/uww/zen.css (../../themes/uww/zen.css)

@@ -1,0 +1,45 @@
+/* UWW Zen Theme - Vertical Tabs & Minimalist UI */
+
+/* Hide the horizontal tabs toolbar */
+#TabsToolbar {
+    visibility: collapse !important;
+}
+
+/* Adjust the titlebar/navbar area */
+#navigator-toolbox {
+    border-bottom: none !important;
+}
+
+/* Sidebar styling */
+#sidebar-box {
+    min-width: 48px !important;
+    background-color: var(--toolbar-bgcolor) !important;
+    border-right: 1px solid var(--chrome-content-separator-color) !important;
+    transition: width 0.2s ease-in-out;
+}
+
+/* Compact mode (default) */
+#sidebar-box:not(:hover) {
+    width: 48px !important;
+}
+
+/* Expanded mode on hover */
+#sidebar-box:hover {
+    width: 250px !important;
+}
+
+/* Neon Green Address Bar for uww:// */
+#urlbar[value^="uww://"] > #urlbar-background {
+    box-shadow: 0 0 10px var(--uww-neon-green, #39ff14) !important;
+    border-color: var(--uww-neon-green, #39ff14) !important;
+}
+
+/* Floating Omnibox */
+#urlbar-container {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+
+#urlbar {
+    border-radius: 12px !important;
+}

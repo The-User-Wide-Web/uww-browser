@@ -9,6 +9,7 @@ rust-version.workspace = true
 
 [dependencies]
 gkrust-shared = { path = "shared" }
+uww-sys = { path = "../../../browser/components/uww/rust" }
 mozilla-central-workspace-hack = { version = "0.1", features = ["gkrust"], optional = true }
 
 # Workarounds for https://github.com/rust-lang/rust/issues/58393
