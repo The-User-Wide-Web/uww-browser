@@ -19,10 +19,10 @@ XPIDL_SOURCES += [
 XPIDL_MODULE = "uww"
 
 EXTRA_JS_MODULES += [
-    "UWWProtocolHandler.sys.mjs",
     "id/UWWIdentity.sys.mjs",
-    "stewardship/UWWStewardship.sys.mjs",
     "pay/UWWPay.sys.mjs",
+    "stewardship/UWWStewardship.sys.mjs",
+    "UWWProtocolHandler.sys.mjs",
 ]
 
 BROWSER_CHROME_MANIFESTS += ["tests/browser/browser.ini"]

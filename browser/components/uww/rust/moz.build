@@ -1,0 +1,9 @@
+# -*- Mode: python; indent-tabs-mode: nil; tab-width: 40 -*-
+# vim: set filetype=python:
+
+# This is a placeholder moz.build for the Rust crate.
+# The actual build is handled by Cargo, but we need this file
+# so the build system can traverse the directory structure.
+
+# We don't need to define anything here because the crate is
+# linked via toolkit/library/rust/Cargo.toml
