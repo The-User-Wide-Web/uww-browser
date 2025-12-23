@@ -563,6 +563,8 @@ license file's hash.
                 cargo_toml = toml.load(fh)
                 relative_path = path.relative_to(self.topsrcdir)
                 package = cargo_toml["package"]
+                if package["name"] == "hashbrown":
+                    continue
                 key = (package["name"], package["version"])
                 if key in crates:
                     self.log(
