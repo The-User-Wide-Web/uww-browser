@@ -12,12 +12,20 @@ XPCOM_MANIFESTS += [
     "components.conf",
 ]
 
+XPIDL_SOURCES += [
+    "nsIUWWIdentity.idl",
+]
+
+XPIDL_MODULE = "uww"
+
 EXTRA_JS_MODULES += [
     "UWWProtocolHandler.sys.mjs",
     "id/UWWIdentity.sys.mjs",
     "stewardship/UWWStewardship.sys.mjs",
     "pay/UWWPay.sys.mjs",
 ]
+
+BROWSER_CHROME_MANIFESTS += ["tests/browser/browser.ini"]
 
 # Register Chrome resources
 JAR_MANIFESTS += ["jar.mn"]

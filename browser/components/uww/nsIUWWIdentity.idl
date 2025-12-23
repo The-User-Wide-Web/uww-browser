@@ -1,0 +1,13 @@
+#include "nsISupports.idl"
+
+[scriptable, uuid(c0ffee00-uww0-0000-0000-000000000002)]
+interface nsIUWWIdentity : nsISupports
+{
+  /**
+   * Signs a challenge string using the secure enclave / hardware key.
+   *
+   * @param challenge The challenge string to sign.
+   * @return The cryptographic signature.
+   */
+  ACString signChallenge(in ACString challenge);
+};
