@@ -96,7 +96,7 @@ TOLERATED_DUPES = {
     "time": 2,
     "block-buffer": 2,
     "digest": 2,
-    "hashbrown": 3,
+    "hashbrown": 4,
     "hmac": 2,
     "itertools": 2,
     "sha2": 2,
