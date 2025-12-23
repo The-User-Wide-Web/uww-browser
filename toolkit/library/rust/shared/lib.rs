@@ -37,6 +37,7 @@ extern crate jog;
 extern crate jsrust_shared;
 extern crate kvstore;
 extern crate uww_sys;
+extern crate uww_identity;
 extern crate mapped_hyph;
 extern crate mozurl;
 extern crate mp4parse_capi;

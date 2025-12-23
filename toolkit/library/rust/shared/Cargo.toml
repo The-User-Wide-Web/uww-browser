@@ -13,6 +13,7 @@ mozglue-static = { path = "../../../../mozglue/static/rust" }
 geckoservo = { path = "../../../../servo/ports/geckolib" }
 kvstore = { path = "../../../components/kvstore" }
 uww-sys = { path = "../../../../browser/components/uww/rust" }
+uww-identity = { path = "../../../../browser/components/uww/id" }
 lmdb-rkv-sys = { version = "0.11", features = ["mdb_idl_logn_9"] }
 mp4parse_capi = { git = "https://github.com/mozilla/mp4parse-rust", rev = "e64650a686e5c5732395cd059e17cfd3b1e5b63b", features = ["missing-pixi-permitted"] }
 nserror = { path = "../../../../xpcom/rust/nserror" }

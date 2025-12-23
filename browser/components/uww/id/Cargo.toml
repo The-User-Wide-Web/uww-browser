@@ -1,0 +1,13 @@
+[package]
+name = "uww-identity"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["staticlib", "cdylib"]
+
+[dependencies]
+# Link to the main uww crates
+nudge-primitives = { path = "../../../../../rust/uww/crates/nudge-primitives" }
+# keyring = "2" # Use OS keyring
+# signature = "2"

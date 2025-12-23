@@ -1,0 +1,37 @@
+
+/* Stewardship Widget */
+#uww-stewardship-button {
+    list-style-image: url("chrome://uww/content/stewardship/shield.svg");
+}
+
+#uww-stewardship-panel {
+    width: 300px;
+    padding: 10px;
+}
+
+.stewardship-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.stewardship-label {
+    font-weight: bold;
+}
+
+.stewardship-value {
+    color: var(--uww-neon-green, #39ff14);
+}
+
+.tax-health-bar {
+    height: 4px;
+    background: #333;
+    border-radius: 2px;
+    margin-top: 4px;
+}
+
+.tax-health-fill {
+    height: 100%;
+    background: var(--uww-neon-green, #39ff14);
+    width: 80%; /* Dynamic */
+}

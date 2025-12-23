@@ -2,3 +2,5 @@ uww.jar:
 % content uww %content/uww/
     content/uww/uww.js
     content/uww/zen.css (../../themes/uww/zen.css)
+    content/uww/stewardship/stewardship.css (stewardship/stewardship.css)
+    content/uww/stewardship/shield.svg (stewardship/shield.svg)
