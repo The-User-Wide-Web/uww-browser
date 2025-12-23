@@ -94,6 +94,20 @@ TOLERATED_DUPES = {
     # and hasn't been updated in 1.5 years (an hypothetical update is
     # expected to remove the dependency on time altogether).
     "time": 2,
+    "block-buffer": 2,
+    "digest": 2,
+    "hashbrown": 3,
+    "hmac": 2,
+    "itertools": 2,
+    "sha2": 2,
+    "syn": 2,
+    "toml": 2,
+    "toml_datetime": 2,
+    "toml_edit": 2,
+    "windows-link": 2,
+    "windows-sys": 2,
+    "zerocopy": 2,
+    "zerocopy-derive": 2,
 }
 
 
