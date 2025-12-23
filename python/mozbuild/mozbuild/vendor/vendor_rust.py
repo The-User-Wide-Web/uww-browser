@@ -312,9 +312,14 @@ Please commit or stash these changes before vendoring, or re-run with `--ignore-
             "arrayref",
             "mach",
             "qlog",
+            "Inflector",
         ],
         "BSD-3-Clause": [
             "subtle",
+            "curve25519-dalek",
+            "ed25519-dalek",
+            "getrandom_or_panic",
+            "schnorrkel",
         ],
     }
 
